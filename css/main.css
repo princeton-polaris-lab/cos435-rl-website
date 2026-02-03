@@ -1,0 +1,154 @@
+body {
+    padding:5em;
+}
+.lecture_date { 
+    font-weight:600;
+}
+.lecture_date span {
+    font-weight:300;
+}
+.lecture_week {
+    font-weight:600;
+}
+.lecture_titles {
+    font-weight:600;
+}
+.req_readings {
+    font-weight:600;
+}
+h3 {
+    margin-top:1.5em;
+}
+.assignment_release {
+    color:blue;
+}
+.assignment_due {
+    color:red;
+}
+
+a,a:hover {
+    color: #990615;
+    text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
+}
+
+
+
+
+/* Name card */
+.namecard-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1:2 ratio for namecard and namecard-2x */
+  gap: 1em;
+  padding: 1em;
+}
+
+.namecard, .namecard-2x {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  overflow: hidden; /* Ensures the header doesn't overflow the rounded corners */
+}
+
+.namecard-header {
+  background-color: #E77500; 
+  color: white;
+  padding: 0.5em 1em;
+  margin: 0;
+  width: 100%;
+}
+
+.namecard-content {
+  padding: 1.5em;
+}
+
+.namecard .namecard-content {
+  display: flex;
+  align-items: center;
+}
+
+.namecard-2x .namecard-content {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr; /* For photo, details, photo, details */
+  gap: 1em;
+  align-items: center;
+}
+
+.profile-photo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  /* Crop to fit */
+
+  object-fit: cover;
+}
+
+
+
+.profile-details {
+  margin-left: 1em;
+}
+
+.profile-details a {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.profile-details p {
+  margin: 0.2em 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .namecard-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .namecard-2x .namecard-content {
+    grid-template-columns: auto 1fr;
+  }
+  
+  .namecard-2x .namecard-content > :nth-child(3),
+  .namecard-2x .namecard-content > :nth-child(4) {
+    margin-top: 1em;
+  }
+}
+/* End name card */
+
+
+
+
+
+
+
+
+/* Nav */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+/*  border-bottom: 1px solid #ddd;*/
+}
+
+.course-info h5 {
+  margin: 0;
+  font-size: 1em;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #990615;
+  margin-left: 1em;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+/* End Nav */

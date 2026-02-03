@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COS 435 / ECE 433: Reinforcement Learning - Spring 2026</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  
+  <body>
+    <div class="container">
+      <h1 style="margin-bottom:0.5em; color: #EE7F2D; text-align: center;">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <strong style="font-weight:700">COS 435 / ECE 433:</strong> Reinforcement Learning
+        </a>
+      </h1>
+      
+      <!-- Princeton Polaris Lab logo under class title -->
+      <div style="margin: 1rem 0 2rem 0; text-align: center;">
+        <a href="/#/" style="display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+          <img src="../Geometric Diamond Logo Design.png" alt="Princeton Polaris Lab" style="height: 40px; width: auto;">
+          <span style="font-size: 1.2rem; font-weight: 600; color: #333; letter-spacing: -0.01em;">Princeton Polaris Lab</span>
+        </a>
+      </div>
+      
+      <div class="header-row">
+        <div class="course-info">
+          <h5 style="color: #EE7F2D;">PRINCETON UNIVERSITY, SPRING 2026</h5>
+          <h5><strong>Location:</strong> Friend Center 101</h5>
+          <h5><strong>Time:</strong> Friday 1:30pm-4:20pm</h5>
+        </div>
+        <div class="nav-links">
+          <a href="#" style="font-weight:600; color: #000;">Home</a> &nbsp;&nbsp;&nbsp;| 
+          <a href="#course-description" style="color: #000;">Course Description</a> &nbsp;&nbsp;&nbsp;|
+          <a href="#schedule" style="color: #000;">Schedule</a> &nbsp;&nbsp;&nbsp;|
+          <a href="#faq" style="color: #000;">FAQ</a>
+        </div>
+      </div>
+
+      <div class="namecard-container">
+        <div class="namecard">
+          <h6 class="namecard-header">Instructor</h6>
+          <div class="namecard-content">
+            <div class="profile-photo">
+              <a href="https://www.peterhenderson.co/" target="_blank">
+                <img src="../ai-law-2025/imgs/Peter.jpg" alt="Instructor">
+              </a>
+            </div>
+              <div class="profile-details">
+                <p><a href="https://www.peterhenderson.co/" target="_blank">Prof. Peter Henderson</a></p>
+                <p>Assistant Professor in CS/SPIA</p>
+                <p>Office Hours: By appointment</p>
+              </div>
+          </div>
+        </div>
+        <div class="namecard">
+            <h6 class="namecard-header">Teaching Assistants</h6>
+            <div class="namecard-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em;">
+              <div class="profile-details">
+                <p><strong>Raj H. Ghugare</strong></p>
+                <p>Office Hours: Mon 3-4pm</p>
+                <p>Friend Center 005</p>
+              </div>
+              <div class="profile-details">
+                <p><strong>Chongyi Zheng</strong></p>
+                <p>Office Hours: Tue 4-5pm</p>
+                <p>COS Building 302</p>
+              </div>
+              <div class="profile-details">
+                <p><strong>Kincaid MacDonald</strong></p>
+                <p>Office Hours: Wed 3-4pm</p>
+                <p>Friend Center 010</p>
+              </div>
+              <div class="profile-details">
+                <p><strong>Zeyu Shen</strong></p>
+                <p>Office Hours: Fri 9-10am</p>
+                <p>Sherred Hall 3rd Floor</p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+
+      <section id="course-description">
+        <h3>Course Description</h3>
+        <p>This course provides an introductory overview of reinforcement learning (RL), a machine learning paradigm where agents learn to make decisions by interacting with their environment. We will cover fundamental concepts such as Markov Decision Processes, value functions, and policy optimization. Students will learn important RL algorithms including Q-learning, policy gradient methods, and actor-critic approaches. We will also address key challenges in RL such as exploration, generalization, and sample efficiency. Applications of RL to real-world problems—including robotics, healthcare, and molecular science—will be highlighted throughout the course. Assignments will involve implementing RL algorithms and conducting mathematical analyses. Students will complete an open-ended final group project.</p>
+        
+        <h4 style="margin-top: 1.5em;">Prerequisites</h4>
+        <p>Students should have a solid foundation in machine learning and mathematics, including familiarity with probability, statistics, and linear algebra. Prior completion of courses such as COS 324 (Introduction to Machine Learning) or equivalent is recommended. Programming experience in Python is required.</p>
+      </section>
+
+      <section id="grading">
+        <h3>Course Expectations & Grading</h3>
+        <div class="grading-info">
+          <h4>Components</h4>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 1em"><strong>Participation (15%):</strong> Starting next week: Google form with in-class polling questions; breakout discussions on assigned papers; submit reading reflections on assigned papers with the marked up PDF of the paper.</li>
+            
+            <li style="margin-bottom: 1em"><strong>Problem Sets (15%):</strong> 3 assignments, due every other week starting in two weeks; small theory problems.</li>
+
+            <li style="margin-bottom: 1em"><strong>Programming Assignments (20%):</strong> 3 assignments, starting in two weeks; small programming tasks.</li>
+            
+            <li style="margin-bottom: 1em"><strong>Final Project (50%):</strong> The biggest component! Research project on a topic in RL; aim for academic workshop-level quality.</li>
+          </ul>
+          
+          <h4 style="margin-top: 1.5em;">Policies</h4>
+          <ul style="list-style: disc; padding-left: 1.5em;">
+            <li><strong>Late Submissions:</strong> Late assignments will incur a penalty of 10% per day, up to a maximum of three days. After three days, assignments will not be accepted unless prior arrangements are made.</li>
+            <li><strong>Academic Integrity:</strong> Students are expected to adhere to Princeton University's academic integrity policies. Using LLMs for solving assignments is NOT permitted other than for getting basic understanding, you must understand and be able to explain all code you submit.</li>
+            <li><strong>Collaboration:</strong> You may discuss problem sets with classmates, but must write up solutions independently. List collaborators on your submission.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="resources">
+        <h3>Resources</h3>
+        <div class="grading-info">
+          <h4>Textbook</h4>
+          <ul style="list-style: disc; padding-left: 1.5em;">
+            <li><strong>Required:</strong> None — lecture notes will be posted on the course website.</li>
+          </ul>
+          
+          <h4 style="margin-top: 1em;">Optional Textbooks</h4>
+          <ul style="list-style: disc; padding-left: 1.5em;">
+            <li><em>Reinforcement Learning: An Introduction</em> by Richard S. Sutton and Andrew G. Barto</li>
+            <li><em>Reinforcement Learning: Bit by Bit</em> by Xiuyuan Lu, Benjamin Van Roy, Vikranth Dwaracherla, Morteza Ibrahimi, Ian Osband, and Zheng Wen</li>
+            <li><em>Bandit Algorithms</em> by Tor Lattimore and Csaba Szepesvári (if you're interested in bandits)</li>
+            <li><em>Algorithms for Reinforcement Learning</em> by Csaba Szepesvári</li>
+            <li><em>Mathematical Foundations of Reinforcement Learning</em> by Shiyu Zhao</li>
+          </ul>
+          
+          <h4 style="margin-top: 1em;">Supplementary Materials</h4>
+          <ul style="list-style: disc; padding-left: 1.5em;">
+            <li>Selected research papers for advanced topics</li>
+            <li>OpenAI Spinning Up in Deep RL <a href="https://spinningup.openai.com/" target="_blank">[Link]</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="schedule">
+        <h3>Course Schedule</h3>
+        <p style="font-size: 0.95em; font-style: italic; color: #555; margin-bottom: 1.5em;">
+          Schedule is tentative and subject to change. Check the course website for the most up-to-date information.
+        </p>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th style="width: 8%;">WEEK</th>
+                <th style="width: 20%;">TOPIC</th>
+                <th style="width: 68%;">DESCRIPTION & READINGS</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Course Introduction & Foundations</td>
+                    <td>
+                      <strong>Lecture 1 (Jan 30):</strong> Course intro, what is RL, the Markov Decision Process (MDP), value iteration, and policy iteration.
+                      <br><a href="lecture01_what_is_rl.pdf" target="_blank">[Slides (pre-lecture)]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Value-based RL</td>
+                    <td>
+                      <strong>Lecture 2 (Feb 6):</strong> Q-learning, value-based methods, and value function learning.
+                      <br><strong>Required Readings:</strong>
+                      <ul>
+                        <li><a href="https://arxiv.org/abs/1312.5602" target="_blank">Playing Atari with Deep Reinforcement Learning (Mnih et al., 2013)</a></li>
+                        <li><a href="https://arxiv.org/abs/1710.02298" target="_blank">Rainbow: Combining Improvements in Deep Reinforcement Learning (Hessel et al., 2017)</a></li>
+                        <li><a href="https://www.cis.upenn.edu/~mkearns/papers/tdlambda.pdf" target="_blank">A Finite-time Analysis of Temporal Difference Learning with Linear Function Approximation (Tsitsiklis & Van Roy, 1997)</a></li>
+                      </ul>
+                      <strong>Optional Readings:</strong>
+                      <ul>
+                        <li><a href="https://arxiv.org/abs/2404.12358" target="_blank">From r to Q*: Your Language Model is Secretly a Q-Function (Rafailov et al., 2024)</a></li>
+                        <li><a href="https://link.springer.com/content/pdf/10.1007/BF00992698.pdf" target="_blank">Q-learning (Watkins & Dayan, 1992)</a></li>
+                      </ul>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h3>Frequently Asked Questions</h3>
+        <div class="grading-info">
+          <h4>How do I enroll in this course?</h4>
+          <p>This course has limited enrollment. If you are interested in taking this course, please sign up for the waitlist below. We will reach out with enrollment instructions as the semester approaches.</p>
+          <p style="margin-top: 1em; margin-bottom: 1.5em;">
+            Use this link for the waitlist: <a href="https://forms.gle/Db9PYjhDtHoSrr4g9" target="_blank" style="color: #2E5799; text-decoration: none; font-weight: 600;">https://forms.gle/thqtMXUsjAXMutyH6</a>
+          </p>
+          <h4 style="margin-top: 1.5em;">What are the prerequisites?</h4>
+          <p>Students should have completed COS 324 (Introduction to Machine Learning) or an equivalent course. Familiarity with probability, statistics, linear algebra, and Python programming is required.</p>
+          
+          <h4 style="margin-top: 1.5em;">Is this course suitable for graduate students?</h4>
+          <p>Yes! This course is open to both undergraduate and graduate students. Graduate students may be expected to complete additional readings or a more advanced final project.</p>
+          
+          <h4 style="margin-top: 1.5em;">What programming language will we use?</h4>
+          <p>All assignments will be in Python using standard ML libraries (NumPy, PyTorch). Familiarity with these tools is helpful but not required—we will provide tutorials.</p>
+          
+          <h4 style="margin-top: 1.5em;">Can I audit the course?</h4>
+          <p>Formal auditing is not possible, but if there's room you can sit in on lectures.</p>
+        </div>
+      </section>
+
+
+      <style>
+        body {
+          font-family: system-ui, -apple-system, sans-serif;
+          line-height: 1.5;
+          color: #333;
+          padding-bottom: 3em;
+        }
+        
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 2em;
+        }
+        
+        .header-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          margin: 2em 0;
+          flex-wrap: wrap;
+          gap: 1em;
+        }
+        
+        .namecard-container {
+          display: flex;
+          gap: 2em;
+          margin: 2em 0;
+          flex-wrap: wrap;
+        }
+        
+        .namecard {
+          flex: 1;
+          min-width: 300px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        
+        .namecard-header {
+          background: #EE7F2D;
+          color: white;
+          margin: 0;
+          padding: 1em;
+          font-weight: 600;
+        }
+        
+        .namecard-content {
+          padding: 1em;
+        }
+        
+        .profile-details p {
+          margin: 0.5em 0;
+        }
+        
+        section {
+          margin: 3em 0;
+        }
+        
+        h3 {
+          color: #EE7F2D;
+          margin-bottom: 1em;
+        }
+        
+        h4 {
+          color: #D46B1A;
+        }
+        
+        .table-responsive {
+          overflow-x: auto;
+        }
+        
+        .table {
+          margin-top: 1em;
+        }
+        
+        .table th {
+          background: #f8f9fa;
+          padding: 1em;
+        }
+        
+        .table td {
+          vertical-align: top;
+          padding: 1.2em 0.8em;
+        }
+        
+        .table ul {
+          padding-left: 1.2em;
+          margin-bottom: 0.5em;
+        }
+        
+        .table p {
+          margin-bottom: 0.8em;
+        }
+        
+        td strong {
+          display: block;
+          margin-top: 0.8em;
+          color: #EE7F2D;
+        }
+        
+        td a {
+          color: #2E5799;
+          text-decoration: none;
+        }
+        
+        td a:hover {
+          text-decoration: underline;
+        }
+        
+        .grading-info {
+          background: #f8f9fa;
+          padding: 2em;
+          border-radius: 8px;
+        }
+        
+        .important-notes {
+          margin-top: 2em;
+          padding-top: 2em;
+          border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+          .header-row {
+            flex-direction: column;
+          }
+          
+          .namecard {
+            flex: 100%;
+          }
+        }
+      </style>
+    </div>
+  </body>
+        <!--  copyright notice and footer-->
+    <footer>
+      
+      <div class="container">
+        <p style="text-align: center; font-size: 0.8em; color: #666;">&copy; Peter Henderson. All rights reserved. Style inspired by <a href="https://joonspk-research.github.io/cs222-fall24/">Stanford CS 222 Webpage.</a></p>
+      </div>          
+</html>
+
