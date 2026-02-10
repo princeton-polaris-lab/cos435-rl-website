@@ -106,17 +106,30 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding: 1em;
+  }
+
   .namecard-container {
     grid-template-columns: 1fr;
   }
-  
+
   .namecard-2x .namecard-content {
     grid-template-columns: auto 1fr;
   }
-  
+
   .namecard-2x .namecard-content > :nth-child(3),
   .namecard-2x .namecard-content > :nth-child(4) {
     margin-top: 1em;
+  }
+
+  .header-row {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .nav-links a {
+    margin-left: 0.3em;
   }
 }
 /* End name card */
