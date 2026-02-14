@@ -28,12 +28,13 @@
         <div class="course-info">
           <h5 style="color: #EE7F2D;">PRINCETON UNIVERSITY, SPRING 2026</h5>
           <h5><strong>Location:</strong> Friend Center 101</h5>
-          <h5><strong>Time:</strong> Friday 1:30pm-4:20pm</h5>
+          <h5><strong>Time:</strong> Friday 1:20pm-4:10pm</h5>
         </div>
         <div class="nav-links">
           <a href="#" style="font-weight:600; color: #000;">Home</a> &nbsp;&nbsp;&nbsp;| 
           <a href="#course-description" style="color: #000;">Course Description</a> &nbsp;&nbsp;&nbsp;|
           <a href="#schedule" style="color: #000;">Schedule</a> &nbsp;&nbsp;&nbsp;|
+          <a href="#assignments" style="color: #000;">Assignments</a> &nbsp;&nbsp;&nbsp;|
           <a href="#faq" style="color: #000;">FAQ</a>
         </div>
       </div>
@@ -108,8 +109,8 @@
           <h4 style="margin-top: 1.5em;">Policies</h4>
           <ul style="list-style: disc; padding-left: 1.5em;">
             <li><strong>Late Submissions:</strong> Late assignments will incur a penalty of 10% per day, up to a maximum of three days. After three days, assignments will not be accepted unless prior arrangements are made.</li>
-            <li><strong>Academic Integrity:</strong> Students are expected to adhere to Princeton University's academic integrity policies. Using LLMs for solving assignments is NOT permitted other than for getting basic understanding, you must understand and be able to explain all code you submit. That being said, we are okay with some small amount of LLM usage for understanding concepts and ideas, as well as helping with code for more complicated projects---but only minimimally for writing as a post-draft check! But again, you are responsible for the content.</li>
-            <li><strong>Collaboration:</strong> You may discuss problem sets with classmates, but must write up solutions independently. List collaborators on your submission.</li>
+            <li><strong>Academic Integrity:</strong> Students are expected to adhere to Princeton University's academic integrity policies. Using LLMs for solving assignments is NOT permitted other than for getting basic understanding and learning, you must understand and be able to explain all code you submit. That being said, we are okay with some small amount of LLM usage for understanding concepts and ideas, as well as helping with code for more complicated projects—but only minimimally for writing as a post-draft check! But again, you are responsible for the content.</li>
+            <li><strong>Collaboration:</strong> You may discuss problem sets with classmates and work together with up to 5 people. List collaborators on your submission and write-up/submit solutions individually.</li>
           </ul>
         </div>
       </section>
@@ -134,6 +135,9 @@
             <li><em>Bandit Algorithms</em> by Tor Lattimore and Csaba Szepesvári (if you're interested in bandits)</li>
             <li><em>Algorithms for Reinforcement Learning</em> by Csaba Szepesvári</li>
             <li><em>Mathematical Foundations of Reinforcement Learning</em> by Shiyu Zhao</li>
+            <li><em>An Introduction to Deep Reinforcement Learning</em> by V. François-Lavet, P. Henderson, R. Islam, M.G. Bellemare, and J. Pineau</li>
+            <li><em>Markov Decision Processes: Discrete Stochastic Dynamic Programming</em> by Martin L. Puterman</li>
+            <li><em>Theoretical Neuroscience</em> by Peter Dayan and Laurence F. Abbott (Chapters 8–10)</li>
           </ul>
           
           <h4 style="margin-top: 1em;">Supplementary Materials</h4>
@@ -141,6 +145,18 @@
             <li>Selected research papers for advanced topics</li>
             <li>OpenAI Spinning Up in Deep RL <a href="https://spinningup.openai.com/" target="_blank">[Link]</a></li>
           </ul>
+        </div>
+      </section>
+
+      <section id="assignments">
+        <h3>Assignments</h3>
+        <div class="grading-info">
+          <h4>Problem Set and Coding Assignment 1</h4>
+          We have provided both the assignment and the TeX file for use as a template. Unless explicitly specified, please type up your solutions using TeX and submit your compiled PDF, generated plots, and completed hw.py file on Gradescope. 
+          <p>
+            <a href="hw/hw1/hw1.pdf" target="_blank">PDF</a> | <a href="hw/hw1/hw1.tex" target="_blank">.TeX</a> | <a href="hw/hw1/hw1.zip" target="_blank">code.zip</a>
+          </p>
+          <p style="margin-top: 0.5em; font-style: italic; color: #555;">We will post submission instructions on Canvas.</p>
         </div>
       </section>
 
@@ -165,6 +181,15 @@
                     <td>
                       <strong>Lecture 1 (Jan 30):</strong> Course intro, what is RL, the Markov Decision Process (MDP), value iteration, and policy iteration.
                       <br><a href="lecture01_what_is_rl.pdf" target="_blank">[Slides]</a>
+                      <br><strong>Optional Textbook Coverage:</strong>
+                      <ul>
+                        <li>Sutton &amp; Barto: Ch 3 (Finite Markov Decision Processes), Ch 4 (Dynamic Programming)</li>
+                        <li>Puterman: Ch 2 (Model Formulation), Ch 6 (Discounted Markov Decision Problems)</li>
+                        <li>Szepesvári: Ch 1 (Markov Decision Processes)</li>
+                        <li>Zhao: Ch 1–4 (Basic Concepts through Value Iteration and Policy Iteration)</li>
+                        <li>François-Lavet et al.: Ch 3 (Introduction to Reinforcement Learning)</li>
+                        <li>Dayan &amp; Abbott: Ch 9 (Classical Conditioning and Reinforcement Learning)</li>
+                      </ul>
                     </td>
                 </tr>
                 <tr>
@@ -185,6 +210,13 @@
                         <li><a href="https://arxiv.org/abs/2404.12358" target="_blank">From r to Q*: Your Language Model is Secretly a Q-Function (Rafailov et al., 2024)</a></li>
                         <li><a href="https://link.springer.com/content/pdf/10.1007/BF00992698.pdf" target="_blank">Q-learning (Watkins & Dayan, 1992)</a></li>
                       </ul>
+                      <strong>Optional Textbook Coverage:</strong>
+                      <ul>
+                        <li>Sutton &amp; Barto: Ch 6 (Temporal-Difference Learning), Ch 9–10 (On-policy Prediction and Control with Approximation)</li>
+                        <li>Szepesvári: Ch 2 (Value Prediction Problems)</li>
+                        <li>Zhao: Ch 7 (Temporal-Difference Methods), Ch 8 (Value Function Methods)</li>
+                        <li>François-Lavet et al.: Ch 4 (Value-Based Methods for Deep RL)</li>
+                      </ul>
                     </td>
                 </tr>
                 <tr>
@@ -200,6 +232,13 @@
                         <li><a href="https://www.cis.upenn.edu/~mkearns/papers/tdlambda.pdf" target="_blank">"Bias-Variance" Error Bounds for Temporal Difference Updates (Kearns &amp; Singh 2000)</a></li>
                         <li><a href="https://arxiv.org/abs/1509.02971" target="_blank">Continuous control with deep reinforcement learning [DDPG] (Lillicrap et al., 2015)</a></li>
                       </ul>
+                      <strong>Optional Textbook Coverage:</strong>
+                      <ul>
+                        <li>Sutton &amp; Barto: Ch 6 (Temporal-Difference Learning), Ch 9–10 (On-policy Prediction and Control with Approximation)</li>
+                        <li>Szepesvári: Ch 2 (Value Prediction Problems), Ch 3 (Control)</li>
+                        <li>Zhao: Ch 7 (Temporal-Difference Methods), Ch 8 (Value Function Methods)</li>
+                        <li>François-Lavet et al.: Ch 4 (Value-Based Methods for Deep RL)</li>
+                      </ul>
                     </td>
                 </tr>
                 <tr>
@@ -214,6 +253,13 @@
                         <li><a href="https://arxiv.org/abs/1502.05477" target="_blank">Trust Region Policy Optimization [TRPO] (Schulman et al., 2015)</a></li>
                         <li><a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/KakadeLangford-icml2002.pdf" target="_blank">Approximately Optimal Approximate Reinforcement Learning (Kakade &amp; Langford, 2002)</a></li>
                         <li><a href="https://arxiv.org/abs/1908.00261" target="_blank">On the Theory of Policy Gradient Methods: Optimality, Approximation, and Distribution Shift (Agarwal et al., 2019)</a></li>
+                      </ul>
+                      <strong>Optional Textbook Coverage:</strong>
+                      <ul>
+                        <li>Sutton &amp; Barto: Ch 13 (Policy Gradient Methods)</li>
+                        <li>Szepesvári: Ch 3 (Control — actor-critic methods)</li>
+                        <li>Zhao: Ch 9 (Policy Gradient Methods)</li>
+                        <li>François-Lavet et al.: Ch 5 (Policy Gradient Methods for Deep RL)</li>
                       </ul>
                     </td>
                 </tr>
@@ -231,6 +277,13 @@
                         <li><a href="https://proceedings.mlr.press/v139/chung21a/chung21a.pdf" target="_blank">Beyond Variance Reduction: Understanding the True Impact of Baselines on Policy Optimization (Chung et al., 2021)</a></li>
                         <li><a href="https://arxiv.org/abs/1802.09477" target="_blank">Addressing Function Approximation Error in Actor-Critic Methods [TD3] (Fujimoto et al., 2018)</a></li>
                       </ul>
+                      <strong>Optional Textbook Coverage:</strong>
+                      <ul>
+                        <li>Sutton &amp; Barto: Ch 13 (Policy Gradient Methods)</li>
+                        <li>Szepesvári: Ch 3 (Control — actor-critic methods)</li>
+                        <li>Zhao: Ch 10 (Actor-Critic Methods)</li>
+                        <li>François-Lavet et al.: Ch 5 (Policy Gradient Methods for Deep RL)</li>
+                      </ul>
                     </td>
                 </tr>
                 <!--
@@ -242,6 +295,12 @@
                       <br><strong>Pick any two:</strong>
                       <ul>
                         <li><a href="https://arxiv.org/abs/1801.01290" target="_blank">Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor [SAC] (Haarnoja et al., 2018)</a></li>
+                      </ul>
+                      <strong>Optional Textbook Coverage:</strong>
+                      <ul>
+                        <li>Sutton &amp; Barto: Ch 11 (Off-policy Methods with Approximation)</li>
+                        <li>Szepesvári: Ch 3 (Control)</li>
+                        <li>François-Lavet et al.: Ch 4 (Value-Based Methods for Deep RL)</li>
                       </ul>
                     </td>
                 </tr>

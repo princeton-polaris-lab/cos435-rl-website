@@ -1,0 +1,482 @@
+\documentclass[12pt]{article}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{enumerate}
+\usepackage{fancyvrb}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{placeins}
+\usepackage{tikz}
+\usepackage{tikzsymbols}
+\usepackage{todonotes}
+\usepackage{bbm}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{soul} % for HL
+\usepackage{color} % for HL
+\usepackage{minted}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage{enumitem}
+\usepackage{parskip}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% \renewcommand{\theenumi}{\roman{enumi}}
+\newcommand{\rmn}[1]{{\textcolor{blue}{\bf [{\sc rmn:} #1]}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\usetikzlibrary{positioning,calc}
+%%%%%%%%%
+\usepackage[most]{tcolorbox}
+\newtcolorbox[]{solution}[1][]{%
+    breakable,
+    enhanced,
+    colback=white,
+    title=Solution,
+    #1
+}
+
+\newtcolorbox[]{fillme}[1][]{%
+    breakable,
+    enhanced,
+    colback=white,
+    title=Fill me in,
+    #1
+}
+
+\newcommand*{\E}{\mathbb{E}}
+\newcommand*{\prob}{\mathbb{P}}
+\newcommand*{\F}{\mathcal{F}}
+\newcommand*{\bo}{\mathbb{B}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{observation}{Observation}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+%%%%%%%%%%
+
+% \date{Due February 24, 2025}
+\author{\begin{fillme}[width=0.3\textwidth]
+ Your name here.
+\end{fillme}} % Fill in your name!
+
+\title{ECE433/COS435 Reinforcement Learning\\
+      Assignment 1: Value Functions\\
+  Spring 2026\\
+}
+
+\begin{document}
+  \maketitle
+  \section*{Collaborators}
+\begin{fillme}
+ Please fill in the names and NetIDs of your collaborators in this section. Make sure you each submit separately, but feel free to work together and submit the same answers as long as you put your names together here.
+\end{fillme}
+
+\section*{Instructions}
+Writeups should be typesetted in Latex and submitted as PDF. \textbf{Please submit the asked-for snippet and answer in the solutions box as part of your writeup. Attach code as a .zip file \emph{with the exact structure as we've distributed the zip}, we will run the code against standardized unit tests.}
+
+\paragraph{Grading.} 
+The problem set will graded out of 50 points, and the coding assignment will also be graded out of 50 points, making the total score 100 points.
+
+\section*{Question 0 (0 points). Feedback}
+How many hours did you spend on this homework? Please fill in the solution after you've done all the questions.
+\begin{solution}
+    Your solution here...
+\end{solution}
+
+\section*{Problem Set (50 points)}
+
+\subsection*{Question 1: Discount Factor and Optimal Policy: Battery Management MDP (10 points)}
+
+    A delivery robot has battery level $e \in \{0,1,2,3,4,5\}$. The episode starts at $e=2$. There are two actions:
+    
+    \begin{itemize}
+      \item \textbf{Work} (deliver one package): if $e>0$, you receive reward $+1$ and transition to $e' = e-1$.
+      \item \textbf{Recharge}: if $e<5$, you receive reward $0$ and transition to $e' = e+1$.
+    \end{itemize}
+    
+    Absorbing states:
+    \begin{itemize}
+      \item If the battery reaches $e=0$, the robot shuts down ($e=0$ is an absorbing state, looping back to itself with reward $0$).
+      \item If the robot reaches full charge $e=5$ (i.e., on the transition $4 \to 5$), it receives an additional bonus reward $+12$ and then loops back on itself indefinitely with reward $0$ after that.
+    \end{itemize}
+
+    % [TODO: add the tikz diagram of the above MDP]
+    
+    Assume an infinite-horizon discounted objective with discount factor $\gamma \in [0,1)$.
+    
+    \begin{enumerate}
+      \item[(a)] Consider two strategies starting from $e=2$:
+      \begin{enumerate}
+        \item Strategy A: \emph{Work until shutdown}.
+        \item Strategy B: \emph{Recharge until full charge} (and collect the bonus).
+      \end{enumerate}
+      Compute the discounted return of each strategy and derive an inequality in $\gamma$ characterizing when Strategy B yields higher return than Strategy A. Show your steps in detail.
+      \begin{solution}
+        Your solution here...
+    \end{solution}
+    
+      \item[(c)] In 1--2 sentences, explain how increasing $\gamma$ changes what the agent ``cares about'' in this MDP, and how that change is reflected in the optimal action at $e=2$.
+      
+      \begin{solution}
+        Your solution here...
+    \end{solution}
+    \end{enumerate}
+    
+    
+
+
+\subsection*{Question 2: Bias Variance Tradeoffs for Expected SARSA (15 points)}
+
+Consider two TD update targets for a state-action pair $(s, a)$:
+\begin{itemize}[nosep]
+    \item \textbf{Sarsa:} \quad $\hat{v}_t = r_t + \gamma\, Q_t(s_{t+1},\, a_{t+1})$, \; where $a_{t+1} \sim \pi_t(\cdot \mid s_{t+1})$
+    \item \textbf{Expected Sarsa:} \quad $v_t = r_t + \gamma \displaystyle\sum_{a'} \pi_t(a' \mid s_{t+1})\, Q_t(s_{t+1},\, a')$
+\end{itemize}
+
+Assume both methods share the same reward $r_t$ and next state $s_{t+1}$, and that---conditional on $s_{t+1}$---the only source of randomness distinguishing the two targets is the action selection $a_{t+1}$.  Let $T^{s'}_{sa} = \Pr(s_{t+1} = s' \mid s_t = s, a_t = a)$ denote the transition probability, and write $\pi_{s'a'}$ as shorthand for $\pi_t(a' \mid s')$.
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{(\alph*)},itemsep=12pt]
+
+\item Show that both update targets have the same expected value.  That is, show
+\[
+    \E\{\hat{v}_t\} = \E\{v_t\}.
+\]
+What does this tell you about the relative \emph{bias} of the two methods (under the same policy $\pi$)?
+
+\begin{solution}
+    Your solution here...
+\end{solution}
+
+\item Using the identity $\Var(X) = \E\{X^2\} - (\E\{X\})^2$, write out expressions for the variance of each update target.  Since the two targets share the same mean, argue that comparing their variances reduces to comparing $\E\{X_t^2\}$ for each.
+
+\begin{solution}
+    Your solution here...
+\end{solution}
+
+\item After expanding and simplifying, you should find that the difference in variance, $\Var(\hat{v}_t) - \Var(v_t)$, equals
+\[
+    \gamma^2 \sum_{s'} T^{s'}_{sa} \left(\, \sum_{a'} \pi_{s'a'}\bigl(Q_t(s',a')\bigr)^2 \;-\; \Bigl(\sum_{a'} \pi_{s'a'}\, Q_t(s',a')\Bigr)^{\!2}\;\right).
+\]
+
+Recall that for non-negative weights $w_i \geq 0$ with $\sum_i w_i = 1$, the quantity
+\[
+    \sum_i w_i\, x_i^2 \;-\; \Bigl(\sum_i w_i\, x_i\Bigr)^{\!2}
+\]
+is the \emph{weighted variance} of the values $x_i$.  Using this fact, provide an intuitive explanation for \emph{when} Expected Sarsa will have meaningfully lower variance than Sarsa, and when the two methods will behave similarly.
+
+\begin{solution}
+    Your solution here...
+\end{solution}
+
+\item Based on your analysis, conjecture about the relative online performance of Sarsa versus Expected Sarsa in two settings:
+\begin{enumerate}[label=(\roman*)]
+    \item A problem with a near-greedy optimal policy where all $Q$-values at each state are similar.
+    \item A problem where $Q$-values vary widely across actions and the behavior policy has high stochasticity (e.g., large $\epsilon$ in $\epsilon$-greedy).
+\end{enumerate}
+Briefly justify your reasoning.
+
+\begin{solution}
+    Your solution here...
+\end{solution}
+
+\end{enumerate}
+
+
+<<<<<<< HEAD
+\subsection*{Question 3: Thinking through a SARSA, Expected SARSA, and Q-Learning Update (10 points)}
+=======
+\subsection*{Question 3: Thinking through a SARSA, Expected SARSA, and Q-Learning Update (15 points)}
+>>>>>>> e67bb2a (add assignment)
+
+Consider a simplified $3\times4$ CliffWalking grid. The agent starts at $S$ (bottom-left), the goal is $G$ (bottom-right), and the bottom-middle cells are cliff. Actions are $\mathcal{A}=\{U,D,L,R\}$. Stepping off the grid leaves the agent in place.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+\def\w{2.4}  % cell width
+\def\h{1.8}  % cell height
+
+% --- Draw filled backgrounds first ---
+% S cell (green)
+\fill[green!10] (0,0) rectangle (\w,\h);
+% Cliff cells (red hatched)
+\fill[red!8] (\w,0) rectangle (2*\w,\h);
+\fill[red!8] (2*\w,0) rectangle (3*\w,\h);
+% G cell (blue)
+\fill[blue!10] (3*\w,0) rectangle (4*\w,\h);
+
+% --- Draw full grid ---
+\draw[thick] (0,0) grid[xstep=\w, ystep=\h] (4*\w, 3*\h);
+
+% --- Hatching for cliff (drawn after grid) ---
+\foreach \xstart in {\w, 2*\w} {
+    \begin{scope}
+        \clip (\xstart,0) rectangle (\xstart+\w, \h);
+        \foreach \i in {-10,...,20} {
+            \draw[red!25, thin] (\xstart+\i*0.25, 0) -- ++(0.9, 0.9);
+        }
+    \end{scope}
+}
+
+% --- Cell coordinate labels (top-left of each cell, small and gray) ---
+\foreach \r in {0,1,2} {
+    \foreach \c in {0,1,2,3} {
+        \pgfmathtruncatemacro{\rr}{2-\r}  % row 0 is top in grid
+        \node[font=\scriptsize, text=black!50, anchor=north west]
+            at (\c*\w+0.1, {(3-\r)*\h-0.08}) {$(\rr,\c)$};
+    }
+}
+
+% --- Special cell text ---
+\node[font=\bfseries\Large] at (0.5*\w, 0.5*\h) {S};
+\node[font=\bfseries, text=red!60!black] at (1.5*\w, 0.65*\h) {Cliff};
+\node[font=\scriptsize, text=red!60!black] at (1.5*\w, 0.25*\h) {$r=-100$};
+\node[font=\bfseries, text=red!60!black] at (2.5*\w, 0.65*\h) {Cliff};
+\node[font=\scriptsize, text=red!60!black] at (2.5*\w, 0.25*\h) {$r=-100$};
+\node[font=\bfseries\Large] at (3.5*\w, 0.5*\h) {G};
+
+% --- Legend (right of grid) ---
+\node[font=\small, anchor=west] at (4*\w+0.5, 2.65*\h) {All other moves: $r = -1$};
+\node[font=\small, anchor=west] at (4*\w+0.5, 2.15*\h) {Cliff: $r = -100$, reset to $S$};
+\node[font=\small, anchor=west] at (4*\w+0.5, 1.65*\h) {Goal: $r = 0$, episode ends};
+\node[font=\small, anchor=west] at (4*\w+0.5, 1.15*\h) {Off-grid: stay in place};
+
+
+\end{tikzpicture}
+\end{center}
+
+\noindent The rewards and transitions are annotated in the diagram above. Transitions are deterministic.
+
+Use $\gamma = 1$, learning rate $\alpha = 0.5$, and the $\epsilon$-greedy behavior policy with $\epsilon = 0.5$ and $|\mathcal{A}|=4$.
+
+\bigskip
+\noindent\textbf{Initial $Q$-values.} Rather than starting from $Q\equiv 0$, suppose the agent has already done some learning. The non-zero entries are:
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+State & $Q(\cdot, U)$ & $Q(\cdot, D)$ & $Q(\cdot, L)$ & $Q(\cdot, R)$ \\
+\midrule
+$S=(2,0)$ & $-3$ & $0$ & $0$ & $0$ \\
+$(1,0)$   & $0$ & $-8$ & $0$ & $-2$ \\
+$(1,1)$   & $0$ & $-100$ & $-2$ & $-1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All entries not shown are $0$.
+
+\bigskip
+\noindent\textbf{Trajectory.} The agent executes the following short trajectory before falling off the cliff:
+\[
+S \xrightarrow{\;U\;} (1,0) \xrightarrow{\;R\;} (1,1) \xrightarrow{\;D\;} \text{Cliff} 
+\]
+<<<<<<< HEAD
+with rewards $-1,\; -1,\; -100$ respectively. 
+=======
+with rewards $-1,\; -1,\; -100$ respectively. \emph{Important:} Use ONLY this trajectory for updates in all three parts of this question, assuming updates in order of steps. Remember, you are learning from experience, this is the only experience you have access to. We assume an end of episode after falling off of the cliff, so no actions or rewards after that (expected value is 0).
+>>>>>>> e67bb2a (add assignment)
+
+\textbf{Important:} For SARSA, recall that $a_{t+1}$ is the \emph{next action in the trajectory}. At each step, the next action is the one shown on the next arrow.
+
+\bigskip
+
+\begin{enumerate}[label=\textbf{(\alph*)}, itemsep=12pt]
+
+<<<<<<< HEAD
+\item \textbf{(6 pts)} Perform the \textbf{SARSA} updates for each of the three transitions. Show the updated $Q$-value after each step.
+=======
+\item Perform the \textbf{SARSA} updates for each of the three transitions. Show the updated $Q$-value after each step.
+>>>>>>> e67bb2a (add assignment)
+
+\begin{solution}
+    Your solution here... Make sure to show Q(S, U), Q((1,0), R), and Q((1,1), D) after each update.
+\end{solution}
+
+<<<<<<< HEAD
+\item \textbf{(6 pts)} Starting from the \emph{same} initial $Q$-values (not the values from part (a)), perform the \textbf{Q-Learning} updates for the same trajectory. Show each update and identify where the updates differ from SARSA.
+=======
+\item Starting from the \emph{same} initial $Q$-values (not the values from part (a)), perform the \textbf{Q-Learning} updates for the same trajectory. Show each update and identify where the updates differ from SARSA.
+>>>>>>> e67bb2a (add assignment)
+
+\begin{solution}
+    Your solution here... Make sure to show Q(S, U), Q((1,0), R), and Q((1,1), D) after each update.
+\end{solution}
+
+<<<<<<< HEAD
+\item \textbf{(6 pts)} Again starting from the \emph{same} initial $Q$-values, perform the \textbf{Expected SARSA} updates. Show each update and identify where the updates differ from SARSA and Q-Learning.
+=======
+\item Again starting from the \emph{same} initial $Q$-values, perform the \textbf{Expected SARSA} updates. Show each update and identify where the updates differ from SARSA and Q-Learning.
+>>>>>>> e67bb2a (add assignment)
+
+\begin{solution}
+    Your solution here... Make sure to show Q(S, U), Q((1,0), R), and Q((1,1), D) after each update.
+\end{solution}
+
+<<<<<<< HEAD
+\item \textbf{(2 pts)} Compare the updated values of $Q(S,U)$ and $Q((1,0), R)$ across the three algorithms. In 2--3 sentences, explain intuitively why they differ, and relate this to the on-policy vs.\ off-policy distinction.
+=======
+\item Compare the updated values of $Q(S,U)$ and $Q((1,0), R)$ across the three algorithms. In 2--3 sentences, explain intuitively why they differ, and relate this to the on-policy vs.\ off-policy distinction.
+
+\begin{solution}
+    Your solution here...
+\end{solution}
+>>>>>>> e67bb2a (add assignment)
+
+\end{enumerate}
+
+\subsection*{Question 4: Bellman Residual (10 points)}
+In the lecture, we introduced the (optimal) Bellman operator for an infinite horizon MDP with discount factor $\gamma$ and transition $p$:
+$$(\bo V)(s) = \max_{a\in\mathcal{A}} \bigg\{r(s,a) + \gamma \sum_{s'\in\mathcal{S}} p(s'|s,a) V(s')\bigg\},$$
+and the Bellman operator with respect to a certain policy $\pi$:
+$$(\bo^\pi V)(s) = \sum_{a\in\mathcal{A}} r(s,a)\pi(a|s)+ \gamma \sum_{s'\in\mathcal{S},a\in \mathcal{A}} p(s'|s,a)\pi(a|s) V(s').$$
+We denote the optimal policy by $\pi^*$ and the optimal value function by $V^*$. As we know from the lecture, learning $V^*$ is equivalent to solving the following Bellman equation:
+$$V(s) -\bo V(s) = 0, \forall s \in \mathcal{S}.$$
+For an arbitrary function $V: \mathcal{S} \rightarrow \mathbb{R}$, define the Bellman residual to be $(\bo V - V ) $, and its magnitude by $\|\bo V - V \|_\infty$. Recall that for a vector $x = (x_i)_{i\in[d]}$, $\|\cdot\|_\infty$ is defined by $\max_{i\in[d]} |x_i|$. As we will see through the course, this \textbf{Bellman residual is an important component of several important RL algorithms such as the Deep Q-network. }
+%
+%
+\subsection*{Question 4.a}Prove the following statements for an arbitrary $V: \mathcal{S} \rightarrow \mathbb{R}$ (not necessarily a value function for any policy):
+\begin{align*}
+    \|V - V^\pi \|_\infty &\leq \frac{\|V - \bo^\pi V\|_\infty}{1-\gamma}, \text{ for any policy } \pi\\
+    \|V - V^* \|_\infty &\leq \frac{\|V - \bo V\|_\infty}{1-\gamma}.
+\end{align*}
+(Hint: use Bellman equation to expand $V^\pi$, then apply triangle inequality.)
+\begin{solution}
+    Your solution here...
+\end{solution}
+%
+%
+\subsection*{Question 4.b} Now let's assume that $\pi$ is the greedy policy extracted from $V$, and assume $\|V - \bo V\|_\infty \leq \epsilon$. Prove the following inequality by utilizing the results in Question 4.a: 
+$$V^* - V^{\pi} \leq  \frac{2\epsilon}{1-\gamma}.$$
+This shows that as long as the Bellman residual of $V$ is small, then the policy learned from $V$ will not be too bad. 
+\begin{solution}
+Your solution here...
+\end{solution}
+
+\end{document}
+
+
+
+
+\section*{Coding Problems (50 points)}
+
+In this question you will implement tabular RL algorithms on two MDPs (typically called ``environments'' in code) and generate convergence plots.
+
+\noindent \textbf{Setup:} Install dependencies with \texttt{pip install gymnasium numpy matplotlib pytest}. The code files are:
+\begin{itemize}
+    \item \texttt{hw1.py} --- fill in every function marked \texttt{TODO}. Do not change function signatures.
+    \item \texttt{utils.py} --- shared utilities (transition model helpers, plotting). \textbf{Do not modify.}
+\end{itemize}
+
+\noindent \textbf{Submission:} Submit your completed \texttt{hw1.py}, the generated plots in \texttt{plots/}, and your written answers below. Make sure to include the generated plots relevant to each question in your pdf solution as well as the zip folder containing the code.
+
+\subsection*{3.1 Value Iteration on FrozenLake-v1 (25 points)}
+
+You will implement three variants of value iteration on the \texttt{FrozenLake-v1} environment (4$\times$4 grid, stochastic transitions with \texttt{is\_slippery=True}, $\gamma = 0.99$). All variants should converge to the same optimal value function $V^*$.
+
+
+\textbf{(coding, 5 pts)} Implement \texttt{value\_iteration}: standard synchronous VI. Stop when $\max_s |V_{k+1}(s) - V_k(s)| < \theta$.
+
+
+\textbf{(coding, 5 pts)} Implement \texttt{gauss\_seidel\_vi}: in-place (Gauss-Seidel) VI. Same as standard VI except that $V$ is updated in-place, so when computing $Q(s, a)$ the latest values are used for states $s' < s$.
+
+
+
+\textbf{(coding, 5 pts)} Implement \texttt{prioritized\_sweeping\_vi}: instead of sweeping states in order, sweep in order of highest Bellman error.
+
+
+
+
+\textbf{(coding, 3 pts)} Implement \texttt{extract\_policy}: given a value function $V$, return the greedy policy $\pi$
+
+
+
+
+\noindent \textbf{(written)} Run \texttt{python hw1.py} to generate convergence plots [NOTE: you may get errors until you finish the second half of the implementations, so feel free to comment out code while you're debugging this part. Don't forget to uncomment if you do this though]. Compare the convergence rates of all three VI variants. Which converges fastest in terms of equivalent sweeps? Put the relevant value iteration convergence plots into your solution here.
+
+\begin{solution}
+Your solution here...
+\end{solution}
+
+\subsection*{3.2 TD Learning on CliffWalking-v0 (25 points)}
+
+You will implement three TD learning algorithms on the \texttt{CliffWalking-v0} environment (4$\times$12 grid, deterministic transitions, $\gamma = 0.99$, $\epsilon = 0.1$). You will see instructions in the code along with function definitions.
+
+
+\textbf{(coding, 3 pts)} Implement \texttt{epsilon\_greedy}: with probability $\epsilon$ return a uniformly random action, otherwise return $\arg\max_a Q(s, a)$.
+
+
+
+\textbf{(coding, 6 pts)} Implement \texttt{sarsa}.
+
+
+
+\textbf{(coding, 6 pts)} Implement \texttt{expected\_sarsa}.
+
+
+
+\textbf{(coding, 6 pts)} Implement \texttt{q\_learning}.
+
+
+
+
+ \textbf{(written, 4 pts)} Now, run \texttt{python hw1.py} to generate the policy arrow plots and reward curves. You're running the code on the CliffWalking example we covered in class.
+
+ \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{cliffwalking.png}
+    \caption{CliffWalking environment.}
+ \end{figure}
+
+You should see several plots in the \texttt{plots/} directory, including the policy arrow plots and reward curves. Include those plots in your solution along with a writeup of your answers to the following questions:
+
+\begin{itemize}
+    \item Compare the policies learned by Expected SARSA and Q-Learning. Which takes the ``safe'' path and which takes the ``optimal'' path? Relate this to the on-policy vs.\ off-policy distinction.
+    \item Notice that the plotted reward curves (\texttt{td\_convergence\_cliffwalking\_v0.png}) for Q-learning include a ``behavioral'' and a ``target'' curve. What is the difference between the two? Why is the target curve stable and better than all other curves (what is not happening there that is happening in others)?
+    \item One of the generated plots is a ``sweep'' over learning rates. That is, we try a bunch of different learning rates that we pass to the algorithms. Using the learning-rate sweep plot (\texttt{alpha\_sweep\_cliffwalking.png}), compare how sensitive each algorithm is to the choice of $\alpha$. You should see one algorithm fall apart at large learning rates? Which one is it and why?
+\end{itemize}
+
+\begin{solution}
+INCLUDE ALL THE PLOTS GENERATED FOR THIS QUESTION IN YOUR SOLUTION HERE IN ADDITION TO A WRITTEN RESPONSE TO THE QUESTIONS ABOVE.
+\end{solution}
+
+
+
