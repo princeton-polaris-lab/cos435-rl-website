@@ -220,11 +220,7 @@ Briefly justify your reasoning.
 \end{enumerate}
 
 
-<<<<<<< HEAD
-\subsection*{Question 3: Thinking through a SARSA, Expected SARSA, and Q-Learning Update (10 points)}
-=======
 \subsection*{Question 3: Thinking through a SARSA, Expected SARSA, and Q-Learning Update (15 points)}
->>>>>>> e67bb2a (add assignment)
 
 Consider a simplified $3\times4$ CliffWalking grid. The agent starts at $S$ (bottom-left), the goal is $G$ (bottom-right), and the bottom-middle cells are cliff. Actions are $\mathcal{A}=\{U,D,L,R\}$. Stepping off the grid leaves the agent in place.
 
@@ -309,11 +305,7 @@ All entries not shown are $0$.
 \[
 S \xrightarrow{\;U\;} (1,0) \xrightarrow{\;R\;} (1,1) \xrightarrow{\;D\;} \text{Cliff} 
 \]
-<<<<<<< HEAD
-with rewards $-1,\; -1,\; -100$ respectively. 
-=======
 with rewards $-1,\; -1,\; -100$ respectively. \emph{Important:} Use ONLY this trajectory for updates in all three parts of this question, assuming updates in order of steps. Remember, you are learning from experience, this is the only experience you have access to. We assume an end of episode after falling off of the cliff, so no actions or rewards after that (expected value is 0).
->>>>>>> e67bb2a (add assignment)
 
 \textbf{Important:} For SARSA, recall that $a_{t+1}$ is the \emph{next action in the trajectory}. At each step, the next action is the one shown on the next arrow.
 
@@ -321,45 +313,29 @@ with rewards $-1,\; -1,\; -100$ respectively. \emph{Important:} Use ONLY this tr
 
 \begin{enumerate}[label=\textbf{(\alph*)}, itemsep=12pt]
 
-<<<<<<< HEAD
-\item \textbf{(6 pts)} Perform the \textbf{SARSA} updates for each of the three transitions. Show the updated $Q$-value after each step.
-=======
 \item Perform the \textbf{SARSA} updates for each of the three transitions. Show the updated $Q$-value after each step.
->>>>>>> e67bb2a (add assignment)
 
 \begin{solution}
     Your solution here... Make sure to show Q(S, U), Q((1,0), R), and Q((1,1), D) after each update.
 \end{solution}
 
-<<<<<<< HEAD
-\item \textbf{(6 pts)} Starting from the \emph{same} initial $Q$-values (not the values from part (a)), perform the \textbf{Q-Learning} updates for the same trajectory. Show each update and identify where the updates differ from SARSA.
-=======
 \item Starting from the \emph{same} initial $Q$-values (not the values from part (a)), perform the \textbf{Q-Learning} updates for the same trajectory. Show each update and identify where the updates differ from SARSA.
->>>>>>> e67bb2a (add assignment)
 
 \begin{solution}
     Your solution here... Make sure to show Q(S, U), Q((1,0), R), and Q((1,1), D) after each update.
 \end{solution}
 
-<<<<<<< HEAD
-\item \textbf{(6 pts)} Again starting from the \emph{same} initial $Q$-values, perform the \textbf{Expected SARSA} updates. Show each update and identify where the updates differ from SARSA and Q-Learning.
-=======
 \item Again starting from the \emph{same} initial $Q$-values, perform the \textbf{Expected SARSA} updates. Show each update and identify where the updates differ from SARSA and Q-Learning.
->>>>>>> e67bb2a (add assignment)
 
 \begin{solution}
     Your solution here... Make sure to show Q(S, U), Q((1,0), R), and Q((1,1), D) after each update.
 \end{solution}
 
-<<<<<<< HEAD
-\item \textbf{(2 pts)} Compare the updated values of $Q(S,U)$ and $Q((1,0), R)$ across the three algorithms. In 2--3 sentences, explain intuitively why they differ, and relate this to the on-policy vs.\ off-policy distinction.
-=======
 \item Compare the updated values of $Q(S,U)$ and $Q((1,0), R)$ across the three algorithms. In 2--3 sentences, explain intuitively why they differ, and relate this to the on-policy vs.\ off-policy distinction.
 
 \begin{solution}
     Your solution here...
 \end{solution}
->>>>>>> e67bb2a (add assignment)
 
 \end{enumerate}
 
