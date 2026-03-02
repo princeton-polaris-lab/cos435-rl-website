@@ -300,25 +300,70 @@
                       </ul>
                     </td>
                 </tr>
-                <!--
                 <tr>
                     <td>6</td>
-                    <td>Off-policy Learning</td>
+                    <td>Exploration</td>
                     <td>
-                      <strong>Lecture 6 (Mar 6):</strong> Off-policy learning and SAC.
-                      <br><strong>Pick any two:</strong>
+                      <strong>Lecture 6 (Mar 6):</strong> Exploration and exploitation. Entropy regularization in policy gradients and convergence properties. Maximum entropy RL framework. Exploration in the bandit setting: UCB, Thompson Sampling, and regret bounds.
+                      <br><strong>All optional:</strong>
                       <ul>
                         <li><a href="https://arxiv.org/abs/1801.01290" target="_blank">Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor [SAC] (Haarnoja et al., 2018)</a></li>
+                        <li><a href="https://arxiv.org/abs/2007.06558" target="_blank">Fast Global Convergence of Natural Policy Gradient Methods with Entropy Regularization (Cen et al., 2021)</a></li>
+                        <li><a href="https://arxiv.org/abs/1704.06440" target="_blank">Equivalence Between Policy Gradients and Soft Q-Learning (Schulman, Chen &amp; Abbeel, 2017)</a></li>
+                        <li><a href="https://arxiv.org/pdf/1706.01905" target="_blank">Parameter Space Noise for Exploration (Plappert et al., 2018)</a></li>
+                        <li><a href="https://proceedings.mlr.press/v80/haarnoja18b.html" target="_blank">Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor (Haarnoja et al., 2018)</a></li>
+                        <li><a href="https://proceedings.mlr.press/v119/mei20b/mei20b.pdf" target="_blank">On the Global Convergence Rates of Softmax Policy Gradient Methods (Mei et al., 2020)</a></li>
                       </ul>
-                      <strong>Optional Textbook Coverage:</strong>
+                      <strong>Additional Optional Background:</strong>
                       <ul>
-                        <li>Sutton &amp; Barto: Ch 11 (Off-policy Methods with Approximation)</li>
-                        <li>Szepesvári: Ch 3 (Control)</li>
-                        <li>François-Lavet et al.: Ch 4 (Value-Based Methods for Deep RL)</li>
+                        <li><a href="https://arxiv.org/abs/1805.00909" target="_blank">Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review (Levine, 2018)</a></li>
+                        <li>Lattimore &amp; Szepesvári: Ch 6-10 (Stochastic Bandits)
                       </ul>
                     </td>
                 </tr>
-                -->
+                <tr>
+                    <td>7</td>
+                    <td>Exploration (cont'd)</td>
+                    <td>
+                      <strong>Lecture 7 (Mar 13):</strong> Exploration continued — Bayesian and information-theoretic perspectives. Thompson Sampling theory, Information-Directed Sampling, and Posterior Sampling for RL.
+                      <br><strong>Pick any two:</strong>
+                      <ul>
+                        <li><a href="https://arxiv.org/abs/1403.5556" target="_blank">Learning to Optimize via Information-Directed Sampling (Russo &amp; Van Roy, 2018)</a></li>
+                        <li><a href="https://arxiv.org/abs/1707.02038" target="_blank">A Tutorial on Thompson Sampling (Russo, Van Roy, Kazerouni, Osband &amp; Wen, 2018)</a></li>
+                        <li><a href="https://arxiv.org/abs/1306.0940" target="_blank">(More) Efficient Reinforcement Learning via Posterior Sampling (Osband, Russo &amp; Van Roy, 2013)</a></li>
+                        <li><a href="https://arxiv.org/abs/1607.00215" target="_blank">Why is Posterior Sampling Better than Optimism for Reinforcement Learning? (Osband &amp; Van Roy, 2017)</a></li>
+                      </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Reward Specification &amp; Shaping</td>
+                    <td>
+                      <strong>Lecture 8 (Mar 27):</strong> Reward specification, misspecification, and reward shaping. When is reward "enough"? Potential-based shaping, reward hacking, and the challenges of designing good reward functions.
+                      <br><strong>Pick any two:</strong>
+                      <ul>
+                        <li><a href="https://www.sciencedirect.com/science/article/pii/S0004370221000862" target="_blank">Reward is Enough (Silver, Singh, Precup &amp; Sutton, 2021)</a></li>
+                        <li><a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/NgHaradaRussell-shaping-ICML1999.pdf" target="_blank">Policy Invariance Under Reward Transformations: Theory and Application to Reward Shaping (Ng, Harada &amp; Russell, 1999)</a></li>
+                        <li><a href="https://arxiv.org/abs/2209.13085" target="_blank">Defining and Characterizing Reward Hacking (Skalse, Howe, Krasheninnikov &amp; Krueger, 2022)</a></li>
+                        <li><a href="https://arxiv.org/abs/2201.03544" target="_blank">The Effects of Reward Misspecification: Mapping and Mitigating Misaligned Models (Pan, Bhatia &amp; Steinhardt, 2022)</a></li>
+                      </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>RLHF &amp; Alignment</td>
+                    <td>
+                      <strong>Lecture 9 (Apr 3):</strong> Reinforcement learning from human feedback (RLHF), reward modeling from preferences, Direct Preference Optimization, and AI alignment.
+                      <br><strong>Pick any two:</strong>
+                      <ul>
+                        <li><a href="https://arxiv.org/abs/1706.03741" target="_blank">Deep Reinforcement Learning from Human Preferences (Christiano et al., 2017)</a></li>
+                        <li><a href="https://arxiv.org/abs/2203.02155" target="_blank">Training Language Models to Follow Instructions with Human Feedback [InstructGPT] (Ouyang et al., 2022)</a></li>
+                        <li><a href="https://arxiv.org/abs/2305.18290" target="_blank">Direct Preference Optimization: Your Language Model is Secretly a Reward Model [DPO] (Rafailov et al., 2023)</a></li>
+                        <li><a href="https://arxiv.org/abs/2009.01325" target="_blank">Learning to Summarize from Human Feedback (Stiennon et al., 2020)</a></li>
+                        <li><a href="https://arxiv.org/abs/2212.08073" target="_blank">Constitutional AI: Harmlessness from AI Feedback (Bai et al., 2022)</a></li>
+                      </ul>
+                    </td>
+                </tr>
             </tbody>
           </table>
         </div>
