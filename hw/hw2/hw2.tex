@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\tcbuselibrary{skins,breakable}
+
+% ── Solution box ──────────────────────────────────────────────
+\newtcolorbox{solution}{
+  colback=white,
+  colframe=black,
+  coltitle=white,
+  colbacktitle=black!75,
+  title=Solution,
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  sharp corners,
+  boxrule=0.5pt,
+}
+
+% ── Fill-me-in box ────────────────────────────────────────────
+\newtcolorbox{fillmein}{
+  colback=white,
+  colframe=black,
+  coltitle=white,
+  colbacktitle=black!75,
+  title=Fill me in,
+  fonttitle=\bfseries,
+  sharp corners,
+  boxrule=0.5pt,
+}
+
+% ── Formatting ────────────────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% ══════════════════════════════════════════════════════════════
+% Title
+% ══════════════════════════════════════════════════════════════
+\begin{center}
+{\LARGE ECE433/COS435 Reinforcement Learning \\[4pt]
+Assignment 2: Policy Gradient Methods \\[4pt]
+Spring 2026}
+
+\vspace{12pt}
+\begin{fillmein}
+Your name here.
+\end{fillmein}
+
+\vspace{4pt}
+\today
+\end{center}
+
+% ══════════════════════════════════════════════════════════════
+% Collaborators
+% ══════════════════════════════════════════════════════════════
+\section*{Collaborators}
+\begin{fillmein}
+Please fill in the names and NetIDs of your collaborators in this section.
+Make sure you each submit separately, but feel free to work together and
+submit the same answers as long as you put your names together here.
+\end{fillmein}
+
+% ══════════════════════════════════════════════════════════════
+% Instructions
+% ══════════════════════════════════════════════════════════════
+\section*{Instructions}
+
+Writeups should be typesetted in Latex and submitted as PDF.
+\textbf{Please submit the asked-for snippet and answer in the solutions box
+as part of your writeup.  Attach code as a .zip file
+\emph{with the exact structure as we've distributed the zip}, we will run
+the code against standardized unit tests.}
+
+\textbf{Grading.}\quad The problem set will be graded out of 50 points,
+and the coding assignment will also be graded out of 50 points,
+making the total score 100 points.
+
+% ══════════════════════════════════════════════════════════════
+% Question 0
+% ══════════════════════════════════════════════════════════════
+\section*{Question 0 (0 points).\ \ Feedback}
+
+How many hours did you spend on this homework?  Please fill in the
+solution after you've done all the questions.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+% ══════════════════════════════════════════════════════════════
+\section*{Problem Set (50 points)}
+% ══════════════════════════════════════════════════════════════
+
+% ──────────────────────────────────────────────────────────────
+\subsection*{Question 1: Deriving the Policy Gradient (10 points)}
+% ──────────────────────────────────────────────────────────────
+
+The REINFORCE algorithm relies on the \emph{policy gradient theorem}.
+Starting from the objective
+\[
+  J(\theta) \;=\; \mathbb{E}_{\tau \sim \pi_\theta}\!\bigl[R(\tau)\bigr]
+\]
+where $R(\tau) = \sum_{t=0}^{T-1} \gamma^t r_t$ is the discounted return
+of trajectory $\tau = (s_0,a_0,r_0,\dots,s_{T-1},a_{T-1},r_{T-1})$.
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(7 points)} Derive the REINFORCE gradient estimator, explain where the log-derivative trick is used, and show that only future steps surive the derivation.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(3 points)} Why can we not simply compute
+$\nabla_\theta J(\theta)$ by back-propagating through the environment
+dynamics?  What assumption about the environment does REINFORCE avoid?
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+\end{enumerate}
+
+
+% ──────────────────────────────────────────────────────────────
+\subsection*{Question 2: Baselines and Variance Reduction (15 points)}
+% ──────────────────────────────────────────────────────────────
+
+A central challenge with REINFORCE is \textbf{high variance}.
+Subtracting a \emph{baseline} $b(s_t)$ from the returns is one of the
+most important variance-reduction techniques in policy gradient methods.
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(5 points)} Prove that subtracting a state-dependent baseline
+$b(s_t)$ does \emph{not} change the expected policy gradient.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(5 points)} Consider a simple environment where the agent
+always receives \emph{positive} rewards between 50 and 100 (e.g., different
+routes through a maze, all of which reach the goal but with different
+path lengths).
+\begin{itemize}
+  \item Without a baseline ($b=0$), the REINFORCE update
+    $\theta \leftarrow \theta + \alpha\,\nabla_\theta
+    \log\pi_\theta(a_t|s_t)\,G_t$
+    will \emph{increase} the probability of \emph{every} action taken
+    (since $G_t > 0$ always).
+    Explain why this is inefficient and can slow down training.
+  \item Now suppose we subtract $b = 75$ (the average return).  Some
+    advantages $G_t - b$ are now positive (better-than-average trajectories)
+    and some are negative (worse-than-average).  Explain how this makes the
+    gradient signal more informative for learning which actions are
+    actually good.
+\end{itemize}
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(5 points)} In practice, the most common baseline is the
+\emph{value function} $V^\pi(s)$, giving rise to the \emph{advantage}
+$A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s)$.
+\begin{itemize}
+  \item Explain intuitively what the advantage $A^\pi(s,a)$ measures
+        and why it is more useful than the raw return $G_t$ for deciding
+        which actions to reinforce.
+  \item In your coding experiments (Part~1), you will compare REINFORCE
+        with and without a mean-return baseline.  Predict what you expect
+        to observe and explain your reasoning.
+\end{itemize}
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+\end{enumerate}
+
+
+% ──────────────────────────────────────────────────────────────
+\subsection*{Question 3: From REINFORCE to PPO (20 points)}
+% ──────────────────────────────────────────────────────────────
+
+REINFORCE is conceptually simple but has several practical limitations.
+This question walks you through the key ideas behind
+\emph{Proximal Policy Optimization} (PPO).
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(4 points)} REINFORCE uses full Monte Carlo returns $G_t$
+to weight the policy gradient.  Since $G_t$ depends on the entire sequence
+of future rewards (and hence future stochastic actions and transitions),
+its variance grows with episode length.  Explain briefly why this makes
+REINFORCE impractical for long-horizon tasks.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(4 points)} Generalized Advantage Estimation (GAE) defines
+\[
+  \hat{A}_t^{\text{GAE}(\gamma,\lambda)}
+  = \sum_{\ell=0}^{T-t-1}(\gamma\lambda)^\ell\,\delta_{t+\ell},
+  \qquad
+  \delta_t = r_t + \gamma\,V(s_{t+1}) - V(s_t).
+\]
+Show that:
+\begin{itemize}
+  \item When $\lambda=0$: $\hat{A}_t = \delta_t$
+        (one-step TD advantage, low variance but biased).
+  \item When $\lambda=1$: $\hat{A}_t = G_t - V(s_t)$
+        (Monte Carlo advantage, unbiased but high variance).
+\end{itemize}
+Explain in one sentence what $\lambda$ controls.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(7 points)} PPO optimizes the \emph{clipped surrogate
+objective}:
+\[
+  L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\left[\min\!\Bigl(
+    r_t(\theta)\,\hat{A}_t,\;
+    \text{clip}\bigl(r_t(\theta),\,1{-}\epsilon,\,1{+}\epsilon\bigr)
+    \hat{A}_t
+  \Bigr)\right],
+  \quad
+  r_t(\theta) = \frac{\pi_\theta(a_t\mid s_t)}
+                      {\pi_{\theta_{\text{old}}}(a_t\mid s_t)}.
+\]
+
+Let $\epsilon = 0.2$.  Work through the following two scenarios:
+
+\medskip
+\textbf{Scenario 1:} $\hat{A}_t = +3.0$ and $r_t(\theta)=1.5$
+(the new policy is 50\% more likely to take this action).
+\begin{itemize}
+  \item Compute $\text{surr}_1 = r_t \cdot \hat{A}_t$.
+  \item Compute $\text{surr}_2
+        = \text{clip}(r_t, 0.8, 1.2) \cdot \hat{A}_t$.
+  \item What is $L^{\text{CLIP}}$ for this sample?
+        Is the policy encouraged to keep increasing $r_t$ beyond 1.2?
+\end{itemize}
+
+\textbf{Scenario 2:} $\hat{A}_t = -2.0$ and $r_t(\theta)=0.6$
+(the new policy has reduced the probability of this bad action).
+\begin{itemize}
+  \item Compute $\text{surr}_1$ and $\text{surr}_2$.
+  \item What is $L^{\text{CLIP}}$ for this sample?
+        Is the policy encouraged to reduce $r_t$ further below 0.8?
+\end{itemize}
+
+Using these examples, explain in 2--3 sentences why the clipping mechanism
+acts as a ``trust region'' that prevents destructively large policy updates.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(5 points)} REINFORCE discards data after a single gradient
+step.  PPO reuses each batch for multiple gradient steps
+(\texttt{num\_epochs} $> 1$).
+\begin{itemize}
+  \item Why would it be invalid to do multiple gradient steps with vanilla
+        REINFORCE?
+  \item What mechanism in PPO makes data reuse safe?
+  \item What would you expect to happen if \texttt{num\_epochs} were set
+        very large (e.g., 100)?
+\end{itemize}
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+\end{enumerate}
+
+
+% ══════════════════════════════════════════════════════════════
+\section*{Coding Assignment (50 points)}
+% ══════════════════════════════════════════════════════════════
+
+See the coding portion \texttt{hw2.py}.  Implement every function marked
+\texttt{TODO} and get rewards increasing for REINFORCE and PPO. REINFORCE should be able to get close to solving them but it'll be noisy. Don't worry about this as much as getting PPO. PPO should reliably solve both environments.
+
+\subsection*{Part 1: REINFORCE on LunarLander-v3 (15 points)}
+Implement the missing components in hw2.py needed to get the script running for the LunarLander environment with REINFORCE.
+
+\subsection*{Part 2: PPO on LunarLander-v3 (15 points)}
+
+Implement the missing components in hw2.py needed to get the script running for the LunarLander environment with PPO, including \texttt{ValueNetwork}, \texttt{collect\_batch} (with GAE
+advantage computation), \texttt{ppo\_update}, \texttt{train\_ppo}.
+
+\textbf{Note:} Your \texttt{collect\_batch} implementation should handle
+both discrete and continuous action spaces (see Part~3).  Detect the
+action space type using
+\texttt{isinstance(env.action\_space, gym.spaces.Discrete)}.
+
+\subsection*{Part 3: Continuous Control --- PPO/REINFORCE on Pendulum-v1 (5 points)}
+
+So far, both environments have used \emph{discrete} actions.  Many
+real-world control problems require \emph{continuous} actions (e.g.,
+torques, velocities, steering angles).
+
+Implement \texttt{GaussianPolicy}, which outputs a Gaussian (Normal)
+distribution over continuous actions:
+\begin{itemize}
+  \item The network outputs the \emph{mean} of the action distribution.
+  \item A learnable \texttt{log\_std} parameter (one per action dimension)
+        controls the standard deviation.
+  \item Actions are sampled from $\mathcal{N}(\mu, \sigma^2)$ and clamped
+        to the environment's valid range.
+\end{itemize}
+
+This is necessary for getting the Pendulum-v1 environment working.
+
+\subsection*{Part 4: Discussion and Plots (15 points)}
+
+Now run hw2.py and try to make sure that PPO and REINFORCE are learning by looking at the output plots. Don't worry if REINFORCE is not performing well. In particular, look at the REINFORCE versus PPO plots, what do you see?
+
+\begin{solution}
+  Embed all the created plots here. Discuss why PPO is more stable than REINFORCE. What was most annoying to get working and why?
+\end{solution}
+
+
+Now tune the hyperparameters for PPO to get the best performance. Report the hyperparameters you used and the results you achieved. Include the relevant plots you created for different hyperparameters. What was most effective and why? HINT: try increasing the number of epochs and learning rate for PPO. Don't worry so much about REINFORCE, it is possible you won't be able to get it to work beyond some minimal learning.
+
+\begin{solution}
+  Embed all the created plots here. Discuss why PPO is more stable than REINFORCE. What was most annoying to get working and why?
+\end{solution}
+
+\end{document}

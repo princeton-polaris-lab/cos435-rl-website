@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\tcbuselibrary{skins,breakable}
+
+% ── Solution box ──────────────────────────────────────────────
+\newtcolorbox{solution}{
+  colback=white,
+  colframe=black,
+  coltitle=white,
+  colbacktitle=black!75,
+  title=Solution,
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  sharp corners,
+  boxrule=0.5pt,
+} 
+
+% ── Fill-me-in box ────────────────────────────────────────────
+\newtcolorbox{fillmein}{
+  colback=white,
+  colframe=black,
+  coltitle=white,
+  colbacktitle=black!75,
+  title=Fill me in,
+  fonttitle=\bfseries,
+  sharp corners,
+  boxrule=0.5pt,
+}
+
+% ── Formatting ────────────────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% ══════════════════════════════════════════════════════════════
+% Title
+% ══════════════════════════════════════════════════════════════
+\begin{center}
+{\LARGE ECE433/COS435 Reinforcement Learning \\[4pt]
+Assignment 3: Reward Design \\[4pt]
+Spring 2026}
+
+\vspace{12pt}
+\begin{fillmein}
+Your name here.
+\end{fillmein}
+
+\vspace{4pt}
+\today
+\end{center}
+
+% ══════════════════════════════════════════════════════════════
+% Collaborators
+% ══════════════════════════════════════════════════════════════
+\section*{Collaborators}
+\begin{fillmein}
+Please fill in the names and NetIDs of your collaborators in this section.
+Make sure you each submit separately, but feel free to work together and
+submit the same answers as long as you put your names together here.
+\end{fillmein}
+
+% ══════════════════════════════════════════════════════════════
+% Instructions
+% ══════════════════════════════════════════════════════════════
+\section*{Instructions}
+
+Writeups should be typesetted in Latex and submitted as PDF.
+\textbf{Please submit the asked-for snippet and answer in the solutions box
+as part of your writeup.  Attach code as a .zip file
+\emph{with the exact structure as we've distributed the zip}, we will run
+the code against standardized unit tests.}
+
+\textbf{Grading.}\quad The problem set will be graded out of 50 points,
+and the coding assignment will also be graded out of 50 points,
+making the total score 100 points.
+
+% ══════════════════════════════════════════════════════════════
+% Question 0
+% ══════════════════════════════════════════════════════════════
+\section*{Question 0 (0 points).\ \ Feedback}
+
+How many hours did you spend on this homework?  Please fill in the
+solution after you've done all the questions.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+% ══════════════════════════════════════════════════════════════
+\section*{Problem Set (50 points)}
+% ══════════════════════════════════════════════════════════════
+
+% ──────────────────────────────────────────────────────────────
+\subsection*{Question 1: Potential-Based Reward Shaping (15 points)}
+% ──────────────────────────────────────────────────────────────
+
+Ng, Harada, and Russell (1999) proved that \emph{potential-based reward
+shaping} preserves the set of optimal policies.  Consider an MDP
+$M = (S, A, T, R, \gamma)$ and a shaped MDP
+$M' = (S, A, T, R', \gamma)$ where
+\[
+  R'(s,a,s') = R(s,a,s') + F(s,s'),
+  \qquad
+  F(s,s') = \gamma\,\Phi(s') - \Phi(s)
+\]
+for some \textbf{potential function} $\Phi: S \to \mathbb{R}$.
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(10 points)} Prove that any optimal policy $\pi^*$ under $R$
+is also optimal under $R'$.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\end{enumerate}
+
+% ──────────────────────────────────────────────────────────────
+\subsection*{Question 2: Reward Engineering vs.\ Exploration (15 points)}
+% ──────────────────────────────────────────────────────────────
+
+Sparse reward problems can be addressed in (at least) two fundamentally
+different ways:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Reward engineering}: Designing better reward functions
+        (shaping, curriculum, learned reward models).
+  \item \textbf{Exploration methods}: Improving how the agent explores
+        (curiosity-driven exploration, count-based bonuses, Go-Explore,
+        hindsight experience replay).
+\end{enumerate}
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(5 points)} Which approach do you think is more promising
+as a general research direction?  Make an argument for your chosen side,
+considering:
+\begin{itemize}
+  \item Scalability to complex tasks
+  \item Robustness (how likely is each to introduce new failure modes?)
+  \item Practicality (which requires less domain expertise?)
+\end{itemize}
+There is no single right answer---we are looking for thoughtful reasoning.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(5 points)} Can the two approaches be combined?  Describe
+a concrete scenario where using both reward shaping \emph{and} improved
+exploration together would be more effective than either alone.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+\end{enumerate}
+
+
+% ──────────────────────────────────────────────────────────────
+\subsection*{Question 3: What Can Go Wrong with Human Feedback?
+(15 points)}
+% ──────────────────────────────────────────────────────────────
+
+Reinforcement Learning from Human Feedback (RLHF) trains a reward model
+$\hat{R}_\phi$ from human preference comparisons and then optimizes a
+policy $\pi_\theta$ against $\hat{R}_\phi$ (typically using PPO with a KL
+penalty against a reference policy).
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(5 points)} Gao et al.\ (2023) showed that as you optimize
+more aggressively against $\hat{R}_\phi$, the \emph{proxy} reward keeps
+increasing but the \emph{true} reward (as judged by humans) eventually
+\emph{decreases}.  This is sometimes called ``Goodhart's Law'' applied
+to RL.
+\begin{itemize}
+  \item Explain why this happens.  How is this analogous to overfitting
+        in supervised learning?
+  \item How might the KL penalty $\beta \cdot D_{\text{KL}}(\pi_\theta \|
+        \pi_{\text{ref}})$ help mitigate this?
+\end{itemize}
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(5 points)} Give a \textbf{concrete, realistic} example of
+reward hacking in an RLHF-trained language model.  Your example should
+describe:
+\begin{itemize}
+  \item A plausible pattern in the human preference data
+  \item How a reward model might learn an incorrect generalization from
+        this pattern
+  \item How the policy could exploit this incorrect generalization
+  \item Why the resulting behavior would be undesirable
+\end{itemize}
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+
+\item \textbf{(5 points)} Beyond reward overoptimization, what are two
+other fundamental challenges with using human feedback to train AI systems?
+For each, explain the problem and sketch a potential mitigation.
+
+\begin{solution}
+Your solution here\ldots
+\end{solution}
+\end{enumerate}
+
+
+% ══════════════════════════════════════════════════════════════
+\section*{Coding Assignment (50 points)}
+% ══════════════════════════════════════════════════════════════
+
+In this assignment you will use the \texttt{stable\_baselines3}
+implementation of PPO to train an agent on \texttt{MountainCarContinuous-v0}
+with different reward functions.  You will experience firsthand how reward
+design affects learning---and how naive reward shaping can backfire.
+
+See \texttt{hw3.py}.  Install dependencies:
+\texttt{pip install stable-baselines3 gymnasium}.
+
+\subsection*{Background: MountainCarContinuous-v0} 
+
+The car starts in a valley at $x \approx -0.5$ and must reach the flag at
+$x \geq 0.45$. The physics use gravity
+$g = 0.0025$ and the action is a force in $[-1, 1]$.
+
+\subsection*{Part 1: Sparse Reward Baseline (10 points)}
+
+We provide \texttt{SparseMountainCarWrapper}, which strips all default
+rewards and only gives $+1$ when the car reaches the flag.  Run PPO
+with this wrapper and confirm that it fails to learn. Where does the reward plateau? Implement a modified reward, RewardShaping1, that is just adding a bonus for distance to the goal state (going right). Why does distance to goal not help in this case? How might this violate reward shaping assumptions?
+
+\begin{solution}
+Discuss here briefly.
+\end{solution}
+
+\subsection*{Part 2: Your Reward Shaping (40 points)}
+
+Implement 3 other versions of \texttt{RewardShapingWrapper} with your own reward functions, try to come up wtih a better reward function that will get you the most true rewards (steps to the top of the hill).
+
+\begin{solution}
+Include a comparison plot of all four reward shaping functions you came up with and a brief (3--5 sentence) analysis
+of the best true reward. You should have 4 lines with confidence intervals, one for each reward modification you made measuring the true reward against the sparse baseline.
+\end{solution}
+
+\end{document}
